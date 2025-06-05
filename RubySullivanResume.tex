@@ -1,0 +1,283 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.8in}
+\addtolength{\textheight}{1.2in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.6pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    %{\footnotesize\color{accentTitle} #2}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-10pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+  %\vspace{-2pt}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% Ruby Sullivan's Resume %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+  \documentTitle{Ruby Cecelia Sullivan}{
+    % Web Version
+    %\raisebox{-0.05\height} \faPhone\ [redacted - web copy] ~
+    %\raisebox{-0.15\height} \faEnvelope\ [redacted - web copy] ~
+    %%
+    \href{tel:2515862749}{
+      \raisebox{-0.05\height} \faPhone\ 251-586-2749} ~ | ~
+    \href{mailto:ruby@stuffby.cc}{
+      \raisebox{-0.15\height} \faEnvelope\ ruby@stuffby.cc} ~ | ~
+    \href{https://linkedin.com/in/rubycsullivan/}{
+      \raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/rubycsullivan}
+  }
+
+  %--------%
+  % Skills %
+  %--------%
+
+  \section{Skills}
+
+  \begin{multicols}{2}
+    \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
+      \item[\textbf{Languages}] Python, Java, Javascript, HTML/CSS, SQL, C, Ruby, VBA
+      \item[\textbf{Frameworks}] React, NodeCG, Gatsby, QP, Django
+      \item[\textbf{Products}] JIRA, TestComplete, qTest, MATLAB, \\Microsoft Office
+      \item[\textbf{Interpersonal}] Problem solving, technical writing, cross-team collaboration, communication with domestic and international agencies and contractors
+      \item[\textbf{Miscellaneous}] XML, JSON, RESTful APIs, USB and Ethernet communication, Node.js, AWS
+    \end{itemize}
+  \end{multicols}
+
+  %------------%
+  % Experience %
+  %------------%
+
+  \section{Work Experience}
+
+  \headingBf{Kodak Alaris}{August 2021 -- March 2025}
+  \headingIt{Software Quality Engineer II}{Feb 2023 -- Mar 2025}
+  \begin{resume_list}
+    \item Developed new firmware testing automation tools to reach previously untested portions of the firmware
+    \item Identified security vulnerabilities for a range of existing products, some of which had existed for 5+ years
+    \item Part of the Test Planning team for all firmware and hardware QA testing
+    \item Collaborated with other QA engineers in overhauling our test procedures to ensure full coverage of product requirements
+    \item Responsible for all security and network testing for a new product line
+    \item Collaborated with an outside security consultant to complete the security assessment for a new product line
+    \item Created design documentation for previously undocumented sections of firmware
+  \end{resume_list}
+    \vspace{3pt}
+  \headingIt{Software Quality Engineer I}{Feb 2022 -- Feb 2023}
+  \begin{resume_list}
+    \item Automated driver software UI testing to reduce manual effort, reducing person-hours per test cycle by 30\%
+    \item Documented internal testing tools and test procedures for knowledge sharing within the Quality Assurance team
+    \item Utilized monitoring tools to track automated testing and generate reports for team leads and management
+  \end{resume_list}
+    \vspace{3pt}
+  \headingIt{QA Engineer, Contractor}{Aug 2021 -- Feb 2022}
+  \begin{resume_list}
+    \item Modernized test cases from Excel spreadsheets to a new testing platform
+    \item Automated execution and reporting of proprietary Image Processing Chain testing
+    \item Assisted Image Quality team with image quality audits and color verification for new products
+  \end{resume_list}
+
+  \headingBf{Simone Center, RIT}{Spring 2021}
+  \headingIt{Researcher, Co-op}{}
+  \begin{resume_list}
+   \item Performed customer discovery and validation for a technology education start-up
+   \item Lead a team of student researchers from a variety of science and engineering backgrounds
+   \item Prepared and delivered technical and investment presentations
+  \end{resume_list}
+
+  \headingBf{Bryx, Inc.}{Summer 2016 -- Winter 2016}
+  \headingIt{Software Engineer, Co-op}{}
+  \begin{resume_list}
+   \item Proposed and prototyped a web application that became a primary product
+   \item Designed and developed new web-based applications for first responders
+   \item Maintained public website and performed level 1-2 tech support
+  \end{resume_list}
+
+  %-----------%
+  % Education %
+  %-----------%
+
+  \section{Education}
+
+  \headingBf{Rochester Institute of Technology}{} % Note: Adding year(s) exposes an implied age
+  \headingIt{Bachelor of Science in Computer Science}{}
+  \headingIt{Minor in Software Engineering}{}
+  \headingIt{Honors: Magna Cum Laude}{}
+  \begin{resume_list}
+    \item Major Coursework \hspace{2pt}- Concepts of Computer Systems; Software Engineering Foundations; Programming \\Language Concepts; Analysis of Algorithms; Cryptography; Data Communication \& Networks; Data \\Management; Parallel \& Distributed Systems; Data Mining; Data Cleaning \& Preparation
+    \item Minor Coursework - Software Process \& Project Management; Engineering of Software Subsystems; \\Human Centered Requirements \& Design; Web Engineering
+  \end{resume_list}
+
+
+  %----------------------------%
+  % Extracurricular Activities %
+  %----------------------------%
+
+  \section{Additional Experience and Awards}
+
+  \headingBf{Volunteer, Various}{2016 -- Present}
+  \begin{resume_list}
+    \item Organized/volunteered for multiple charity speedrunning events, such as Games Done Quick, RPG Valkyries, Speedruns 4 Trans Liberation, and Power Up With Pride
+    \item Migrated the Power Up With Pride web and RTMP servers from self-hosting to AWS
+    \item Power Up With Pride broadcast producer 
+  \end{resume_list}
+
+  \headingBf{Alumnus, Computer Science House}{}
+  \begin{resume_list}
+    \item Living learning community focusing on technology and professional development at Rochester Institute of Technology
+  \end{resume_list}
+
+\end{document}
